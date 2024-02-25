@@ -2,6 +2,10 @@
 
 This repository contains the source code for a recipe sharing web application built using Node.js, Express.js, EJS, and the MealDB API. Users can sign up, log in, contribute recipes, add recipes to their favorites, search for recipes, and explore various categories of recipes.
 
+## Repository
+
+[Live Link](https://culinashare-2.onrender.com/)
+
 ## Features
 
 - **User Authentication**: Users can sign up with a username and password, and then log in to access the application's features.
