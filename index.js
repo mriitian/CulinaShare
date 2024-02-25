@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 import fs from "fs";
 
 const app = express();
-const Port = 3000;
+const Port = 10000;
 const api_key = "4abc3ddb8bmsh06ceb7832ec39afp1ceedejsn05f582e49a23";
 app.use(express.json());
 // Set up session middleware
