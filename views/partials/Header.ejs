@@ -1,0 +1,74 @@
+<header>
+  <nav class="navbar">
+    <div class="logo" style="color: aliceblue">
+      <h2>
+        <span style="color: chocolate">C</span>ulina
+        <span style="color: chocolate">S</span>hare
+      </h2>
+    </div>
+    <div class="nav-box">
+      <div class="nav-elements">
+        <a href="#" class="nav-element"><h3>Home</h3></a>
+        <% if (authenticated) { %>
+        <a href="/contribute" class="nav-element"><h3>Contribute</h3></a>
+        <a href="/favorites" class="nav-element"><h3>Favourite</h3></a>
+        <% } %>
+        <a href="/about" class="nav-element"><h3>About Us</h3></a>
+      </div>
+    </div>
+    <div class="sign-in">
+      <% if (authenticated) { %>
+
+      <div class="sign-up">
+        <a href="/logout" style="text-decoration: none; color: black"
+          ><h3>Log Out</h3></a
+        >
+      </div>
+      <% } else { %>
+      <div class="sign-up">
+        <a href="/signin" style="text-decoration: none; color: black"
+          ><h3>Sign-up</h3></a
+        >
+      </div>
+
+      <% } %>
+    </div>
+
+    <div class="toggle-btn">
+      <a href="#" class="menu"
+        ><i class="fa-solid fa-bars" style="color: aliceblue"></i
+      ></a>
+    </div>
+  </nav>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 style="text-align: center" class="welcome-text">
+        <% if (authenticated) { %> Welcome <%= username %> <% } else { %>
+        Welcome <% } %>
+      </h1>
+      <p style="text-align: center" class="description-text">
+        Discover delicious recipes from around the world and bring the joy of
+        cooking into your home!
+      </p>
+    </div>
+  </section>
+  <div class="searchBar">
+    <form action="/Search" method="post" class="searchForm">
+      <select name="category" id="category" class="cat-search">
+        <option value="initial" selected>Select a category</option>
+        <% categories.map(cat => { %>
+        <option value="<%= cat.strCategory %>" class="cat-options">
+          <%= cat.strCategory %>
+        </option>
+        <% }); %>
+      </select>
+
+      <input type="text" name="Search" id="Search" class="recipe-search" />
+      <button type="submit" style="background-color: transparent; border: none">
+        <label for="recipe-search" class="recipe-search-label"
+          ><i class="fa-solid fa-magnifying-glass" style="color: aliceblue"></i
+        ></label>
+      </button>
+    </form>
+  </div>
+</header>

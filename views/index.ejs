@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/Search.css" />
+    <link rel="stylesheet" href="/styles/vegetarian.css" />
+    <link rel="stylesheet" href="/styles/navtab.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3vw 0;
+        border-top: 2px solid rgba(255, 250, 250, 0.572);
+        width: 100%;
+        color: antiquewhite;
+        gap: 4vh;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/Header.ejs') %> <%- include('./partials/navTab.ejs')
+    %> <% if (authenticated) { %> <%- include('./partials/contriCarousel.ejs')
+    %> <% } %> <%- include('./partials/footer.ejs') %>
+
+    <script>
+      const toggleBtn = document.querySelector(".toggle-btn");
+      const navElements = document.querySelector(".nav-elements");
+      const navBox = document.querySelector(".nav-box");
+
+      toggleBtn.addEventListener("click", () => {
+        navElements.classList.toggle("active");
+        navBox.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<div class="recipe-container">
+  <div class="recipe-intro">
+    <div class="youtube-video">
+      <iframe
+        src="<%= contribution.embeddedYoutubeLink %>"
+        frameborder="0"
+        allowfullscreen
+        class="iframe"
+      ></iframe>
+    </div>
+    <div class="recipe-intro-text">
+      <div class="recipe-name">
+        <h2><%= contribution.strMeal %></h2>
+        <div class="add-to-fav">
+          <i class="fa-solid fa-bookmark" style="color: #ffffff"></i>
+        </div>
+      </div>
+      <div class="recipe-specifications">
+        <h4 class="specification"><%= contribution.strCategory %></h4>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-requirements">
+    <div class="ingredient-box">
+      <div class="ing-box-title" style="display: flex; justify-content: center">
+        <h2>Ingredients Required</h2>
+      </div>
+      <div class="ingredient" style="grid-template-columns: 1fr">
+        <div class="ingredient-item" style="padding-right: 5vw">
+          <h3 style="text-align: center"><%= contribution.strIngredient %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-instructions">
+    <div class="ins-box-title" style="display: flex; justify-content: center">
+      <h2>Instructions</h2>
+    </div>
+    <ul class="instruction-list">
+      <li class="instruction"><%= contribution.strInstructions%></li>
+    </ul>
+  </div>
+</div>

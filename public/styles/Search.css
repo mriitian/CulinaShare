@@ -1,0 +1,84 @@
+.recipe-search {
+  width: 45%;
+  height: 15px;
+  border-radius: 10px;
+  padding: 1em;
+  margin: 0 1em;
+}
+.recipe-search {
+  width: 80%;
+  height: 20px;
+  margin-left: 0;
+  border-left: 0;
+  border-bottom: 0;
+  border-top: 0;
+  border-radius: 0px 10px 10px 0;
+  margin-right: 2em;
+}
+
+.recipe-search-label {
+  cursor: pointer; /* Show pointer cursor on label */
+}
+
+.fa-magnifying-glass {
+  font-size: 40px; /* Set the size of the magnifying glass icon */
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2vw 6vw;
+}
+.cat-search {
+  /* Adjust the height as needed */
+  width: 20%;
+  padding: 0.5em;
+  font-size: 16px; /* Adjust the padding as needed */ /* Set the font size */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  outline: none; /* Remove the outline when focused */
+  transition: border-color 0.3s ease;
+  border: 0;
+  height: 48px;
+  border-radius: 10px 0 0 10px;
+  background-color: #ff8600;
+}
+
+.recipe-search-label {
+  margin-right: 5%;
+}
+.cat-options {
+  background-color: antiquewhite;
+}
+
+@media screen and (max-width: 500px) {
+  .cat-search {
+    width: 30%;
+    padding: 4px;
+    margin-left: 1em;
+    height: 38px;
+  }
+  .recipe-search {
+    width: 45%;
+    padding: 0.5em;
+    height: 25px;
+    margin-left: 0;
+    border-left: 0;
+    border-bottom: 0;
+    border-top: 0;
+    border-radius: 0px 10px 10px 0;
+    margin-right: 0;
+  }
+  .fa-magnifying-glass {
+    margin: 0 0.5em; /* Set the size of the magnifying glass icon */
+  }
+  .searchForm {
+    margin: 2em;
+  }
+}
+@media screen and (max-width: 400px) {
+  .searchForm {
+    margin: 5px;
+  }
+}

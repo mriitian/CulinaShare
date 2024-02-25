@@ -1,0 +1,55 @@
+<section class="sections">
+  <div class="section-heading">
+    <h1 style="color: aliceblue; text-align: center">Contributions</h1>
+  </div>
+  <div class="carousel-container">
+    <div class="carousel">
+      <% contributions.forEach(recipeItem => { %>
+      <div class="recipe-card">
+        <div class="video-container">
+          <iframe
+            src="<%= recipeItem.embeddedYoutubeLink %>"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer;
+            autoplay; clipboard-write; encrypted-media; gyroscope;
+            picture-in-picture; web-share"
+            allowfullscreen
+            style="width: 100%"
+          ></iframe>
+        </div>
+        <h1 class="recipe-title" style="color: beige">
+          <%= recipeItem.strMeal %>
+        </h1>
+        <button
+          class="contri-sm"
+          style="width: 60%; margin: 0 20%; border-radius: 10px"
+        >
+          <h2>
+            <a
+              href="/contri/<%= recipeItem.strMeal %>"
+              style="text-decoration: none; color: black"
+              >See more</a
+            >
+          </h2>
+        </button>
+        <!-- Add more details or actions for each contribution -->
+      </div>
+      <% }) %>
+      <a
+        href="/contribute"
+        class="recipe-card recipe-card-add"
+        style="
+          text-decoration: none;
+          border: 2px dotted white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <!-- Add more details or actions for each contribution -->
+        <h2 style="color: azure">Add contribution</h2>
+      </a>
+    </div>
+  </div>
+</section>

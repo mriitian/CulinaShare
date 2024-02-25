@@ -1,0 +1,61 @@
+[
+  {
+    "username": "user1",
+    "password": "password1",
+    "favorites": [],
+    "contributions": []
+  },
+  {
+    "username": "user2",
+    "password": "password2",
+    "favorites": [],
+    "contributions": []
+  },
+  {
+    "username": "Vedant",
+    "password": "Parkhe",
+    "favorites": [
+      {
+        "mealId": "52878"
+      }
+    ],
+    "contributions": [
+      {
+        "strMeal": "Baigan",
+        "strCategory": "Main Dish",
+        "strIngredient": "ydfsghfugjsgvzukdyfghisuhxdfiubhxhcvbkuxygcuvyslvbc",
+        "strInstructions": "fghjhgfsukfgbkzudbxfvkuysdkfyvouysf",
+        "strYoutube": "https://youtu.be/ssCHchDI0cs?si=C2LV3bhVuMPfOsla"
+      }
+    ]
+  },
+  {
+    "username": "vedantparkhe2409@gmail.com",
+    "password": "vedantparkhe2409@gmail.com",
+    "favorites": [
+      "52965",
+      "52940",
+      "53071",
+      "52878",
+      "52904",
+      "52997",
+      "53076"
+    ],
+    "contributions": [
+      {
+        "strMeal": "Baigan",
+        "strCategory": "Main Dish",
+        "strIngredient": "nsgiauYSGZD",
+        "strInstructions": "sdgxcuzyx",
+        "strYoutube": "https://youtu.be/s2j4IM4lGDQ?si=fvvJAGpbAhfdnZcX"
+      },
+      {
+        "strMeal": "Gian hai aap",
+        "strCategory": "Soup",
+        "strIngredient": "hafeyjtczgvsdj",
+        "strInstructions": "sbdudygi7efifoaybsdifygaiytgiydfgvdyzxvytfiyztsfxiyfgaygf",
+        "strYoutube": "https://youtu.be/opikz5x_1ak?si=9LY8PNNQIgK8Q2I4"
+      }
+    ]
+  }
+]

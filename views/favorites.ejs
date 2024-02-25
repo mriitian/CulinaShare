@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="recipe.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <title>Saved</title>
+    <style>
+      html {
+        background-color: #000;
+      }
+      body {
+        background: linear-gradient(to bottom, #3919009b, #000);
+        flex-direction: column;
+        align-items: center;
+      }
+      body,
+      .recipe-container,
+      .recipe-img-container,
+      .recipe-intro-text,
+      .recipe-requirements,
+      .recipe-instructions,
+      .ingredient-box,
+      .ingredient,
+      .recipe-specifications,
+      .recipe-name,
+      .instruction-list {
+        display: flex;
+        justify-content: center;
+        color: aliceblue;
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+      .page-heading {
+        display: flex;
+        width: 90%;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .recipe-requirements,
+      .recipe-instructions,
+      .ingredient-box,
+      .recipe-intro-text,
+      .instruction-list {
+        flex-direction: column;
+      }
+      .recipe-requirements {
+        width: 80%;
+      }
+      .recipe-container {
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+      }
+      .recipe-img {
+        object-fit: cover;
+        width: 80%;
+      }
+      .recipe-specifications {
+        gap: 5vw;
+      }
+      .ingredient-item,
+      .ingredient-quantity {
+        border-bottom: 1px solid rgba(208, 128, 0, 0.777);
+      }
+      .recipe-instructions {
+        margin: 5vh 10vw;
+      }
+      .instruction-list {
+        list-style: none;
+        padding: 1em;
+        align-items: center;
+      }
+      .specification {
+        border: 2px solid rgb(255, 224, 47);
+        padding: 0.6em;
+        border-radius: 20px;
+      }
+      .specification:hover {
+        background-color: rgb(255, 247, 0);
+        color: black;
+        box-shadow: 0 0px 16px 4px rgba(255, 191, 0, 0.495);
+      }
+      .ingredient-item {
+        padding-right: 15vw;
+        padding-left: 5vw;
+      }
+      .ingredient-quantity {
+        padding-left: 15vw;
+        padding-right: 5vw;
+      }
+      footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2vw;
+        border-top: 2px solid rgba(255, 250, 250, 0.572);
+        width: 80%;
+      }
+      .youtube-link {
+        padding-bottom: 5vw;
+        padding-top: 0;
+      }
+      .add-to-fav {
+        display: flex;
+        align-items: center;
+        padding: 0 1vw;
+      }
+      @media screen and (max-width: 600px) {
+        .recipe-specifications {
+          flex-direction: column;
+          gap: 0;
+          align-items: center;
+        }
+        .recipe-container {
+          width: 90%;
+        }
+        .specification {
+          width: 60%;
+          text-align: center;
+        }
+        .ingredient-item {
+          padding-right: 5vw;
+          padding-left: 2vw;
+        }
+        .ingredient-quantity {
+          padding-left: 5vw;
+          padding-right: 2vw;
+        }
+        .recipe-requirements {
+          width: 90%;
+        }
+        header {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+        }
+        .page-heading {
+          display: flex;
+          width: 90%;
+          flex-direction: row;
+          justify-content: space-between;
+          font-size: x-small;
+        }
+        .youtube-link {
+          font-size: smaller;
+        }
+        .recipe-instructions {
+          margin: 5vh 3vw;
+        }
+      }
+      @media screen and (max-width: 400px) {
+        .specification,
+        .ingredient-item,
+        .ingredient-quantity {
+          width: 60%;
+          text-align: center;
+          font-size: smaller;
+        }
+        .instruction {
+          width: 100%;
+        }
+        .youtube-link {
+          font-size: x-small;
+        }
+      }
+      .carousel-container {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 1em;
+        margin: 1em;
+      }
+
+      .carousel::-webkit-scrollbar {
+        display: none; /* WebKit */
+      }
+      .section-heading {
+        padding: 1em;
+      }
+      .recipe-card {
+        flex: 0 0 auto;
+        width: 240px;
+        scroll-snap-align: start;
+
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 2px solid snow;
+        padding-bottom: 1em;
+      }
+
+      .recipe-thumb {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .recipe-title {
+        font-size: 18px;
+        margin: 10px 0;
+        padding: 10px 10px;
+        height: 50px;
+      }
+
+      .add-to-fav {
+        text-align: right;
+        padding: 0 10px;
+      }
+
+      .card-features {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 60px;
+      }
+
+      .see-more {
+        border-radius: 10px;
+        padding: 0.5em;
+        border: 2px solid rgb(23, 0, 128);
+        background-color: rgb(255, 136, 0);
+      }
+
+      .saved-grid {
+        padding: 10vw;
+        display: grid;
+        grid-gap: 5vw;
+        grid-template-columns: auto auto auto auto;
+      }
+
+      @media screen and (max-width: 1200px) and (min-width: 861px) {
+        .saved-grid {
+          grid-template-columns: auto auto auto;
+        }
+      }
+      @media screen and (max-width: 860px) and (min-width: 560px) {
+        .saved-grid {
+          grid-template-columns: auto auto;
+        }
+      }
+      @media screen and (max-width: 560px) {
+        .saved-grid {
+          grid-template-columns: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="page-heading">
+        <div class="back">
+          <h2>
+            <a href="/"
+              ><i
+                class="fa-solid fa-right-from-bracket"
+                style="font-size: xx-large; color: azure"
+              ></i
+            ></a>
+          </h2>
+        </div>
+        <div class="recipe-details">
+          <h2>Favourites</h2>
+        </div>
+        <div class="logo">
+          <h2>
+            <span style="color: chocolate">C</span>ulina
+            <span style="color: chocolate">S</span>hare
+          </h2>
+        </div>
+      </div>
+    </header>
+
+    <div class="saved-grid">
+      <% userFav.forEach((meal) => { %>
+      <div class="recipe-card">
+        <img
+          src="<%= meal.strMealThumb %>"
+          alt="<%= meal.strMeal %>"
+          class="recipe-thumb"
+        />
+        <h3
+          class="recipe-title"
+          style="text-decoration: none; color: aliceblue"
+        >
+          <%= meal.strMeal %>
+        </h3>
+        <div class="card-features">
+          <div class="see-more">
+            <a href="/recipe/<%= meal.idMeal %>" style="text-decoration: none"
+              ><h5 style="color: rgb(255, 255, 255); margin: 0 1em">
+                See more..
+              </h5></a
+            >
+          </div>
+          <div class="add-to-fav" data-mealid="<%= meal.idMeal %>">
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+    <script>
+      document.querySelectorAll(".add-to-fav").forEach((button) => {
+        button.addEventListener("click", async (e) => {
+          const mealId = button.getAttribute("data-mealid");
+
+          console.log("Sending mealId:", mealId);
+          try {
+            const response = await fetch("/add-to-favorites", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ mealId: mealId }), // Stringify the body object
+            });
+            if (response.ok) {
+              // Toggle the color of the star icon
+              const starIcon = button.querySelector("i.fa-star");
+              if (starIcon.style.color === "orange") {
+                starIcon.style.color = "aliceblue";
+              } else {
+                starIcon.style.color = "orange";
+              }
+              console.log("Done:", mealId);
+            } else {
+              // Handle error
+              console.error("Failed to add recipe to favorites");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+          }
+        });
+      });
+    </script>
+
+    <footer>
+      <div class="title"><h2>Company Title</h2></div>
+      <div class="footer-menu">
+        <div class="menu-item"><h4>Home</h4></div>
+        <div class="menu-item"><h4>About</h4></div>
+      </div>
+      <div class="copyright" style="text-align: center">
+        &copy; Copyright 2024 Vedant Parkhe.<br />
+        All rights reserved
+      </div>
+    </footer>
+  </body>
+</html>

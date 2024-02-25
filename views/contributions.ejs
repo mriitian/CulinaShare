@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Form</title>
+    <link rel="stylesheet" href="/styles/vegetarian.css" />
+    <style>
+      body {
+        font-family: "Inter", "Lucida Grande", "Lucida Sans Unicode",
+          "Lucida Sans", Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: linear-gradient(to bottom, #3919009b, #000);
+      }
+      html {
+        background-color: #000;
+      }
+      label {
+        color: orange;
+      }
+      .recipe-form {
+        width: 80vw;
+        margin: 0 auto;
+        padding: 2vw;
+      }
+
+      .form-header {
+        text-align: center;
+        color: #fff;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 90%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .form-group textarea {
+        height: 150px;
+      }
+
+      button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .recipe-title {
+        color: #fff;
+      }
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      .recipe-card {
+        width: 50vw;
+      }
+      .recipe-card:hover {
+        transform: scale(1);
+      }
+      .recipe-title {
+        font-size: xx-large;
+      }
+      @media screen and (max-width: 600px) {
+        .recipe-title {
+          font-size: x-large;
+        }
+      }
+      .contri-sm h2 a {
+        text-decoration: none;
+        color: black;
+      }
+      .contri-sm {
+        width: 60%;
+        margin: 0 20%;
+        padding: 0.5vw;
+      }
+      .contri-sm h2 {
+        margin: 0;
+      }
+      footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3vw 0;
+        border-top: 2px solid rgba(255, 250, 250, 0.572);
+        width: 100%;
+        color: antiquewhite;
+        gap: 4vh;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/add-contribution" method="post" class="recipe-form">
+      <h1 class="form-header">Share a Recipe</h1>
+      <div class="form-group">
+        <label for="strMeal">Recipe Name</label>
+        <input
+          type="text"
+          id="strMeal"
+          name="strMeal"
+          placeholder="Enter recipe name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="dishType">Dish Type</label>
+        <select id="dishType" name="strCategory" required>
+          <option value="">Please Select</option>
+          <option value="Main Dish">Main Dish</option>
+          <option value="Side Dish">Side Dish</option>
+          <option value="Appetizer">Appetizer</option>
+          <option value="Soup">Soup</option>
+          <option value="Salad">Salad</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Drink">Drink</option>
+        </select>
+      </div>
+      <!-- Add more form groups as needed -->
+      <div class="form-group">
+        <label for="ingredients">Ingredients</label>
+        <textarea
+          id="ingredients"
+          name="strIngredient"
+          placeholder="Enter ingredients"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="directions">Directions</label>
+        <textarea
+          id="directions"
+          name="strInstructions"
+          placeholder="Enter directions"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input
+          type="text"
+          id="ytLink"
+          name="strYoutube"
+          accept="image/*"
+          required
+        />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="contributions">
+      <div class="carousel">
+        <% contributions.forEach(recipeItem => { %>
+        <div class="recipe-card">
+          <div class="video-container">
+            <iframe
+              src="<%= recipeItem.embeddedYoutubeLink %>"
+              frameborder="0"
+              allowfullscreen
+              style="width: 50vw; height: 28vw"
+            ></iframe>
+          </div>
+          <h1 class="recipe-title"><%= recipeItem.strMeal %></h1>
+          <button class="contri-sm">
+            <h2><a href="/contri/<%= recipeItem.strMeal %>">See more</a></h2>
+          </button>
+          <!-- Add more details or actions for each contribution -->
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

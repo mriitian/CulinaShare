@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  background-color: #000;
+}
+body {
+  background: linear-gradient(to bottom, #3919009b, #000);
+}
+
+.navbar,
+.sign-in {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; /* Center items vertically */
+  padding: 1em;
+  background-color: transparent;
+}
+
+.nav-elements {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.nav-element,
+.logo,
+.searchBar,
+.toggle-btn {
+  padding: 1em;
+  text-decoration: none;
+}
+
+.sign-up {
+  border: 2px solid black;
+  background-color: rgb(47, 255, 82);
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.sign-up:hover {
+  background-color: green;
+}
+
+.toggle-btn {
+  display: none;
+}
+
+.logo,
+.nav-element {
+  color: rgb(255, 255, 255);
+  padding: 1vw 2vw;
+}
+.nav-element:hover {
+  color: rgb(12, 173, 0);
+  transition: 300ms ease;
+}
+
+.hero-section {
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em;
+  gap: 1em;
+  font-size: x-large;
+}
+
+@media only screen and (max-width: 750px) {
+  /* Your existing media query styles */
+  .toggle-btn {
+    display: block;
+  }
+
+  .nav-elements {
+    display: none;
+    animation: cumin 300ms ease-in-out;
+  }
+
+  @keyframes cumin {
+    from {
+      transform: translateX(-200px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  @keyframes cuminr {
+    from {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-200px);
+      opacity: 0;
+    }
+  }
+
+  .nav-elements.active {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    position: fixed;
+    top: 10%;
+    background-color: rgb(255, 255, 255);
+    padding: 5px 0;
+  }
+  .nav-box {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    animation: cumin 300ms ease-in-out;
+  }
+  .nav-box.active {
+    display: block;
+    position: fixed;
+    z-index: 100;
+    width: 70%;
+    top: 0;
+    left: 0;
+    background: white;
+  }
+  .description-text {
+    font-size: 0.6em;
+  }
+  .welcome-text {
+    font-size: 1em;
+  }
+  .nav-element {
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+  }
+  .nav-element:hover {
+    color: rgb(0, 0, 0);
+    transition: 300ms ease;
+  }
+}

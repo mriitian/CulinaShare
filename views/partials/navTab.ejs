@@ -1,0 +1,102 @@
+<section>
+  <div class="section-heading">
+    <h1 style="color: aliceblue; text-align: center">Find by categories</h1>
+  </div>
+  <div class="nav-container">
+    <div class="tab-box">
+      <% categories.map(cat => { %>
+      <button class="tab-btn" id="<%= cat.strCategory %>">
+        <%= cat.strCategory %>
+      </button>
+      <% }); %>
+    </div>
+    <div class="nav-content-box">
+      <% categorisedCarousel.forEach((carousel, index) => { %>
+      <div class="nav-content <%= index === 0 ? 'active' : '' %>">
+        <div class="carousel">
+          <% carousel.forEach(recipeItem => { %>
+          <div class="recipe-card">
+            <img
+              src="<%= recipeItem.strMealThumb %>"
+              alt="<%= recipeItem.strMeal %>"
+              class="recipe-thumb"
+            />
+            <h3
+              class="recipe-title"
+              style="text-decoration: none; color: aliceblue"
+            >
+              <%= recipeItem.strMeal %>
+            </h3>
+
+            <div class="card-features">
+              <div class="see-more">
+                <a
+                  href="/recipe/<%= recipeItem.idMeal %>"
+                  style="text-decoration: none"
+                  ><h5 style="color: black">See more..</h5></a
+                >
+              </div>
+              <% if (authenticated) { %>
+              <a
+                class="add-to-fav see-more"
+                id="addToFavButton"
+                style="color: black; background-color: aqua; cursor: pointer"
+                data-mealid="<%= recipeItem.idMeal %>"
+              >
+                Fav
+              </a>
+              <% } %>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<script>
+  const tabs = document.querySelectorAll(".tab-btn");
+  const all_content = document.querySelectorAll(".nav-content");
+  tabs[0].classList.add("active");
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", (e) => {
+      tabs.forEach((tab) => {
+        tab.classList.remove("active");
+      });
+      tab.classList.add("active");
+
+      all_content.forEach((content) => {
+        content.classList.remove("active");
+      });
+      all_content[index].classList.add("active");
+    });
+  });
+
+  document.querySelectorAll(".add-to-fav").forEach((button) => {
+    button.addEventListener("click", async (e) => {
+      const mealId = button.getAttribute("data-mealid");
+
+      console.log("Sending mealId:", mealId);
+      try {
+        const response = await fetch("/add-to-favorites", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ mealId: mealId }), // Stringify the body object
+        });
+        if (response.ok) {
+          // Handle success, maybe update UI to indicate the recipe is added to favorites
+          console.log("Done:", mealId);
+          button.style.color = "white";
+        } else {
+          // Handle error
+          console.error("Failed to add recipe to favorites");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    });
+  });
+</script>

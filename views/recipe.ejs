@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/styles/recipe.css" />
+  </head>
+  <body>
+    <header>
+      <div class="page-heading">
+        <div class="back">
+          <h2>Prev</h2>
+        </div>
+        <div class="recipe-details">
+          <h2>Recipe Details</h2>
+        </div>
+        <div class="profile"><h2>Profile</h2></div>
+      </div>
+    </header>
+    <div class="recipe-container">
+      <div class="recipe-intro">
+        <div class="youtube-video">
+          <% const videoId = recipe.strYoutube.split('v=')[1]; %>
+          <iframe
+            src="https://www.youtube.com/embed/<%= videoId %>"
+            frameborder="0"
+            allowfullscreen
+            class="iframe"
+          ></iframe>
+        </div>
+        <div class="recipe-intro-text">
+          <div class="recipe-name">
+            <h2><%= recipe.strMeal %></h2>
+            <div class="add-to-fav">
+              <i class="fa-solid fa-bookmark" style="color: #ffffff"></i>
+            </div>
+          </div>
+          <div class="recipe-specifications">
+            <% if (recipe.strCategory) { %>
+            <h4 class="specification"><%= recipe.strCategory %></h4>
+            <% } %> <% if (recipe.strArea) { %>
+            <h4 class="specification"><%= recipe.strArea %></h4>
+            <% } %> <% if (recipe.strTags) { %>
+            <h4 class="specification"><%= recipe.strTags %></h4>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-requirements">
+        <div class="ingredient-box">
+          <div
+            class="ing-box-title"
+            style="display: flex; justify-content: center"
+          >
+            <h2>Ingredients Required</h2>
+          </div>
+
+          <% for (let i = 1; i <= 20; i++) { %> <% const ingredientName =
+          recipe['strIngredient' + i]; %> <% const ingredientMeasure =
+          recipe['strMeasure' + i]; %> <% if (ingredientName !== null &&
+          ingredientName !== "") { %>
+          <div class="ingredient">
+            <div class="ingredient-item">
+              <h3><%= ingredientName %></h3>
+            </div>
+            <div class="ingredient-quantity">
+              <h3><%= ingredientMeasure %></h3>
+            </div>
+          </div>
+          <% } %> <% } %>
+        </div>
+      </div>
+      <div class="recipe-instructions">
+        <div
+          class="ins-box-title"
+          style="display: flex; justify-content: center"
+        >
+          <h2>Instructions</h2>
+        </div>
+        <ul class="instruction-list">
+          <% const instructions = recipe.strInstructions.split('\r\n'); %> <%
+          instructions.forEach((instruction, index) => { %>
+          <li class="instruction">
+            <%= instruction %> <% if (index !== instructions.length - 1) { %>
+            <br />
+            <% } %>
+          </li>
+          <% }); %>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <div class="title"><h2>Company Title</h2></div>
+      <div class="footer-menu">
+        <div class="menu-item"><h4>Home</h4></div>
+        <div class="menu-item"><h4>About</h4></div>
+      </div>
+      <div class="copyright">
+        &copy; Copyright 2024 Vedant Parkhe. All rights reserved
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignIn</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    section {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .signin {
+      text-align: center;
+    }
+
+    .content {
+      max-width: 50vw;
+      margin: 0 auto;
+    }
+
+    .inputBox {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .inputBox input {
+      width: 100%;
+      padding: 10px 0;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid #333333;
+    }
+
+    .inputBox input:focus ~ i,
+    .inputBox input:valid ~ i {
+      top: -18px;
+      font-size: 14px;
+      color: #333333;
+    }
+
+    .inputBox i {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      transition: 0.5s;
+    }
+
+    .links {
+      margin-top: 10px;
+    }
+    form {
+      width: 25vw;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #333333;
+      margin: 0 10px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .inputBox input[type="submit"] {
+      width: 100%;
+      background: #333333;
+      border: none;
+      padding: 10px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .inputBox input[type="submit"]:hover {
+      background: #555555;
+    }
+    .btn-block {
+      color: #000000;
+      text-decoration: none;
+      text-align: center;
+    }
+    #loom-companion-mv3 {
+      display: none;
+    }
+    * {
+      padding: 1vw;
+    }
+    .card-body {
+      display: flex;
+      justify-content: center;
+    }
+    .col-sm-4 * {
+      padding: 0.5em;
+    }
+  </style>
+  <body>
+    <section>
+      <div class="signin">
+        <div class="content">
+          <h2>Sign In</h2>
+          <form action="/login" method="post" class="form">
+            <div class="inputBox">
+              <input type="text" name="username" required />
+              <i style="font-style: normal">Username</i>
+            </div>
+            <div class="inputBox">
+              <input type="password" name="password" required />
+              <i style="font-style: normal">Password</i>
+            </div>
+            <div class="links">
+              <a href="/signup">Signup</a>
+            </div>
+            <div class="inputBox">
+              <input type="submit" value="Login" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

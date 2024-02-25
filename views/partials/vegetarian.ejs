@@ -1,0 +1,37 @@
+<section class="sections">
+  <div class="section-heading">
+    <h1 style="color: aliceblue">Vegetarian Dishes</h1>
+  </div>
+  <div class="carousel-container">
+    <div class="carousel">
+      <% vegetarianList.forEach(recipeItem => { %>
+      <div class="recipe-card">
+        <img
+          src="<%= recipeItem.strMealThumb %>"
+          alt="<%= recipeItem.strMeal %>"
+          class="recipe-thumb"
+        />
+        <h3
+          class="recipe-title"
+          style="text-decoration: none; color: aliceblue"
+        >
+          <%= recipeItem.strMeal %>
+        </h3>
+
+        <div class="card-features">
+          <div class="see-more">
+            <a
+              href="/recipe/<%= recipeItem.idMeal %>"
+              style="text-decoration: none"
+              ><h5 style="color: black">See more..</h5></a
+            >
+          </div>
+          <div class="add-to-fav">
+            <i class="fa-solid fa-star" style="color: aliceblue"></i>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+}
+.tab-box {
+  display: flex;
+  gap: 2vw;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 1em;
+  margin: 1em;
+}
+.tab-box::-webkit-scrollbar {
+  display: none;
+}
+.tab-btn {
+  padding: 0.5vw 1.5vw;
+  border: 1px solid white;
+  border-radius: 20px;
+  font-size: larger;
+}
+.tab-btn.active {
+  background-color: coral;
+  box-shadow: 2px 2px 16px 4px rgba(255, 230, 0, 0.433);
+}
+.nav-content-box {
+  padding: 1.5vw;
+}
+.nav-content {
+  display: none;
+  color: aliceblue;
+  animation: moving 300ms ease-in-out;
+}
+.nav-content.active {
+  display: block;
+}
+@keyframes moving {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
